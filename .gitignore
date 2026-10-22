@@ -1,0 +1,27 @@
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+secrets/
+credentials.json
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Local database dumps and logs
+*.dump
+*.sql.gz
+*.log
+
+# Editor and operating system files
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Temporary outputs
+tmp/
+temp/

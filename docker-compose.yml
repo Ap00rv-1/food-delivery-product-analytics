@@ -1,0 +1,18 @@
+# Separate Postgres for the analytics project (does NOT touch your Track Watch DB).
+# Start:  docker compose up -d
+# Connect: host=localhost port=5433 db=analytics user=analyst
+services:
+  analytics-db:
+    image: postgres:16
+    container_name: analytics-db
+    environment:
+      POSTGRES_DB: analytics
+      POSTGRES_USER: analyst
+      POSTGRES_PASSWORD: ${ANALYTICS_DB_PASSWORD:-change_me}
+    ports:
+      - "5433:5432"          # 5433 on your machine, so it doesn't clash with Track Watch on 5432
+    volumes:
+      - analytics_pgdata:/var/lib/postgresql/data
+      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro   # runs once, on first start
+volumes:
+  analytics_pgdata:

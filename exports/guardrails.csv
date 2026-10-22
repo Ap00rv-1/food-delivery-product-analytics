@@ -1,0 +1,3 @@
+variant,orders,avg_order_value,cancelled,cancel_pct,avg_delivery_min
+control,37811,365.41,1802,4.77,31.5
+treatment,38707,365.44,2007,5.19,31.4
